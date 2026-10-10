@@ -4,7 +4,8 @@ import gradio as gr
 import os 
 
 client = genai.Client(
-    api_key=os.environ["GEMINI_API_KEY"])
+    api_key=os.environ["GEMINI_API_KEY"]
+)
 
 
 languages = {
@@ -37,11 +38,7 @@ outputs = gr.Textbox(lines = 5 , label = "Translated Output"),
 title = "Language Translator",
 description = "Translate a sentence into Hindi, Telugu, or French using Gemini.")
 
-
-demo.launch(server_name="0.0.0.0", 
-            server_port=int(os.environ.get("PORT", "7860"))
-
-question = "how are you "
-language = "Telugu"
-output = language_translator(question, language)
-print(output)
+demo.launch(
+    server_name="0.0.0.0",
+    server_port=int(os.environ.get("PORT", "7860"))
+)
