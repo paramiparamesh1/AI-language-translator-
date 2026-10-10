@@ -1,0 +1,3 @@
+google-genai
+gradio
+pip install -r requirements.txt
