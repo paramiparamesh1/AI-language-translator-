@@ -1,11 +1,11 @@
 from google import genai
 from google.genai import types
 import gradio as gr
-from google.colab import userdata
+import os 
 
+client = genai.Client(
+    api_key=os.environ["GEMINI_API_KEY"]
 
-
-client = genai.Client(api_key=userdata.get("GEMINI_API_KEY"))
 
 languages = {
     "Hindi": "Translate the given sentence into Hindi.",
@@ -38,7 +38,8 @@ title = "Language Translator",
 description = "Translate a sentence into Hindi, Telugu, or French using Gemini.")
 
 
-demo.launch(server_name="0.0.0.0", root_path="/gradio" )
+demo.launch(server_name="0.0.0.0", 
+            server_port=int(os.environ.get("PORT", "7860"))
 
 question = "how are you "
 language = "Telugu"
